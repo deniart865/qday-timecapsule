@@ -1,0 +1,39 @@
+{
+  "name": "qday-timecapsule",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Q-Day Time Capsule: a proof-of-existence notary on QoreChain. Seal a SHA-256 digest with a transaction admitted by a hybrid (secp256k1 + ML-DSA-87) signed window, then read it back and verify it on chain. Build Before Q-Day, Quantum Pass.",
+  "license": "MIT",
+  "scripts": {
+    "build": "hardhat build",
+    "test": "hardhat test",
+    "window": "tsx --env-file=.env scripts/window.ts",
+    "deploy:testnet": "hardhat ignition deploy ignition/modules/TimeCapsule.ts --network qorechainTestnet",
+    "seal": "tsx --env-file=.env scripts/seal.ts",
+    "verify:hybrid": "tsx scripts/verify-hybrid.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@cosmjs/stargate": "^0.39.0",
+    "@qorechain/evm": "^0.14.0",
+    "@qorechain/sdk": "^0.14.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition": "^3.1.9",
+    "@nomicfoundation/hardhat-ignition-viem": "^3.1.6",
+    "@nomicfoundation/hardhat-keystore": "^3.1.2",
+    "@nomicfoundation/hardhat-network-helpers": "^3.0.12",
+    "@nomicfoundation/hardhat-node-test-runner": "^3.1.2",
+    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.7",
+    "@nomicfoundation/hardhat-verify": "^3.1.4",
+    "@nomicfoundation/hardhat-viem": "^3.1.0",
+    "@nomicfoundation/hardhat-viem-assertions": "^3.1.5",
+    "@nomicfoundation/ignition-core": "^3.1.11",
+    "@types/node": "^22.7.5",
+    "hardhat": "^3.21.1",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.3",
+    "viem": "^2.47.6"
+  }
+}
